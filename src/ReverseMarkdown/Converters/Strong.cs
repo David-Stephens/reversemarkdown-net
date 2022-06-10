@@ -24,7 +24,7 @@ namespace ReverseMarkdown.Converters
             }
             else
             {
-                var spaceSuffix = (node.NextSibling?.Name == "strong" || node.NextSibling?.Name == "b")
+                var spaceSuffix = (node.NextSibling?.Name == "strong" || node.NextSibling?.Name == "b" || node.NextSibling?.Name == "i" || node.NextSibling?.Name == "em")
                     ? " "
                     : "";
 
