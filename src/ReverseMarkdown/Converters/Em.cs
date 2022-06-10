@@ -31,7 +31,11 @@ namespace ReverseMarkdown.Converters
                     ? " "
                     : "";
 
-                return $"_{content.Trim()}_{spaceSuffix}";
+                var nbsp = System.Convert.ToChar(160).ToString();
+                var whiteSpaceAtFront = content.StartsWith(nbsp) || content.StartsWith(" ") ? " " : string.Empty;
+                var whiteSpaceAtBack = content.EndsWith(nbsp) || content.EndsWith(" ") ? " " : string.Empty;
+
+                return $"{whiteSpaceAtFront}_{content.Trim()}_{whiteSpaceAtBack}{spaceSuffix}";
             }
         }
 

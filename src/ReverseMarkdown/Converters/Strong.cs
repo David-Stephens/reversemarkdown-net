@@ -28,7 +28,11 @@ namespace ReverseMarkdown.Converters
                     ? " "
                     : "";
 
-                return $"*{content}*{spaceSuffix}";
+                var nbsp = System.Convert.ToChar(160).ToString();
+                var whiteSpaceAtFront = content.StartsWith(nbsp) || content.StartsWith(" ") ? " " : string.Empty;
+                var whiteSpaceAtBack = content.EndsWith(nbsp) || content.EndsWith(" ") ? " " : string.Empty;
+
+                return $"{whiteSpaceAtFront}*{content.Trim()}*{whiteSpaceAtBack}{spaceSuffix}";
             }
         }
 
